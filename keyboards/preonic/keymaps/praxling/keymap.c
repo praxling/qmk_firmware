@@ -17,19 +17,25 @@
 #include QMK_KEYBOARD_H
 // #include "muse.h"
 
-// Custom keycodes
+//** Custom keycodes **//
+// Layer-switching //
 #define L3_TAB LT(_NUMPAD, KC_TAB)
 #define L4_SPACE LT(_MOUSEKEYS, KC_SPC)
 #define TG_NUM TG(_NUMPAD)
 #define LT_RAISE LT(_NUMRAISE, KC_0)
+
+// Custom keys //
 #define HYPER MO(_HYPER)
 #define AGUI_R RGUI(RALT(KC_RIGHT))
 #define AGUI_L RGUI(RALT(KC_LEFT))
 #define GO_BCK RGUI(KC_LBRC)
 #define GO_FWD RGUI(KC_RBRC)
 #define UC_EMOJI RGUI(RCTL(KC_SPC))
+#define CMD_SFT RGUI(KC_RSFT)
+#define CMD_ALT RGUI(KC_RALT)
+#define CMD_CTL RGUI(KC_RCTL)
 
-// Custom layers
+//** Custom layers **//
 enum preonic_layers {
   _DVORAK,
   _QWERTY,
@@ -48,6 +54,7 @@ enum preonic_keycodes {
   LOWER,
   RAISE,
   BACKLIT,
+  OPT_CTL,
 
   // shortcuts
   UC_LOCK,
@@ -92,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   "  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  |  GUI | Hyp  |Lower |    Space    |Raise | GUI  | Alt | Ctrl  |Space |
+ * | Ctrl | Alt  |  GUI | Hyp  |Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
  * `-----------------------------------------------------------------------------------'
  */
 [_DVORAK] = LAYOUT_preonic_grid( \
@@ -100,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,         TD(TD_SCLN),    TD(TD_COMM), KC_DOT,      KC_P,        KC_Y,       KC_F,     KC_G,         KC_C,         KC_R,         KC_L,         KC_BSPC,  \
   L3_TAB,         LSFT_T(KC_A),   CTL_T(KC_O), ALT_T(KC_E), GUI_T(KC_U), KC_I,       KC_D,     GUI_T(KC_H),  ALT_T(KC_T),  CTL_T(KC_N),  SFT_T(KC_S),  TD(TD_MINS), \
   OSM(MOD_LSFT),  TD(TD_QUOT),    KC_Q,        KC_J,        KC_K,        KC_X,       KC_B,     KC_M,         KC_W,         KC_V,         KC_Z,         KC_SFTENT,  \
-  KC_LCTL,        KC_LALT,        KC_LGUI,     HYPER,       LOWER,       L4_SPACE,   L4_SPACE, RAISE,        KC_RGUI,      KC_RALT,      KC_RCTL,      KC_SPC  \
+  KC_LCTL,        KC_LALT,        KC_LGUI,     HYPER,       LOWER,       L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
 ),
 
 
@@ -114,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  |  GUI | Hyp  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | Alt  |  GUI | Hyp  |Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
@@ -122,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,         KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,       KC_Y,     KC_U,         KC_I,         KC_O,         KC_P,         KC_BSPC,  \
   L3_TAB,         LSFT_T(KC_A), CTL_T(KC_S),  ALT_T(KC_D),  GUI_T(KC_F),  KC_G,       KC_H,     GUI_T(KC_J),  ALT_T(KC_K),  CTL_T(KC_L),  TD(TD_SCLN),  TD(TD_QUOT), \
   OSM(MOD_LSFT),  KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,       KC_N,     KC_M,         TD(TD_COMM),  KC_DOT,       KC_SLSH,      KC_SFTENT,  \
-  KC_LCTL,        KC_LALT,      KC_LGUI,      HYPER,        LOWER,        L4_SPACE,   L4_SPACE, RAISE,        KC_LEFT,      KC_DOWN,      KC_UP,        KC_RGHT  \
+  KC_LCTL,        KC_LALT,      KC_LGUI,      HYPER,        LOWER,        L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
 ),
 
 /* Lower
@@ -171,20 +178,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |Dvorak|Qwerty|      |      |      |      |      |      |      |      | Debug|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |TMNL 1|TMNL 0|
+ * | Reset|      |      |      |      |      |      |      |      |      |TMNL 1|TMNL 0|
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |LCGswp|LCGnrm|      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      | Reset|CGtogg|AGtogg|      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_preonic_grid( \
   XXXXXXX, DVORAK,  QWERTY,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DEBUG,  \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  TERM_ON,  TERM_OFF,  \
+  RESET,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  TERM_ON,  TERM_OFF,  \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  LCG_SWP,  LCG_NRM,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
   XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  RESET,    CG_TOGG,  AG_TOGG,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
   XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX  \
 ),
 
@@ -197,8 +204,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |Shift | Ctrl |  Alt | Gui  |      |   +  |   4  |   5  |   6  |   *  |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |   .  |   1  |   2  |   3  |   =  |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------| ,  
- * |      |      |      |      |Dvorak|             |Raise0| Home |PageDn|PageUp|  End |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |Dvorak|             |Raise0|GUIsft|GUIalt|GUIctl|Space |
  * `-----------------------------------------------------------------------------------'
  */
 [_NUMPAD] = LAYOUT_preonic_grid( \
@@ -206,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   KC_COLN, KC_COMM, XXXXXXX, XXXXXXX, XXXXXXX, KC_PMNS, KC_7,         KC_8,           KC_9,           KC_PSLS,        KC_BSPC, \
   _______,  KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, KC_PPLS, GUI_T(KC_4),  ALT_T(KC_5),    CTL_T(KC_6),    SFT_T(KC_PAST), _______, \
   _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DOT,  KC_1,         KC_2,           KC_3,           KC_PEQL,        KC_ENT,  \
-  _______,  _______, _______, _______, TG_NUM,  _______, _______, LT_RAISE,     KC_HOME,        KC_PGDN,        KC_PGUP,        KC_END   \
+  _______,  _______, _______, _______, TG_NUM,  _______, _______, LT_RAISE,     CMD_SFT,        CMD_ALT,        CMD_CTL,        KC_SPC  \
 ),
 
 
@@ -233,9 +240,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Mousekeys
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      | Del  |
+ * |      |      |      |      |      |      |      |MouseL|MouseD|MouseU|MouseR| Del  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |      |ScrlDn|ScrlUp|Mouse1|Mouse2|      |MouseL|MouseD|MouseU|MouseR| Bksp |
+ * | Esc  |      |ScrlDn|ScrlUp|Mouse1|Mouse2|      | Home | End  |      |      | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |Shift | Ctrl |  Alt | Gui  |      |      | Left | Down |  Up  | Right| Del  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -245,9 +252,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_MOUSEKEYS] = LAYOUT_preonic_grid( \
-  _______,  _______, _______,       _______,      _______, _______,  _______, _______, _______, _______, _______,   KC_DEL,  \
-  KC_ESC,   _______, UC_SCRL_DWN,   UC_SCRL_UP,   KC_BTN1, KC_BTN2,  _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,   KC_BSPC, \
-  _______,  KC_LSFT, KC_LCTL,       KC_LALT,      KC_LGUI, _______,  _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,  KC_DEL, \
+  _______,  _______, _______,       _______,      _______, _______,  _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,   KC_DEL,  \
+  KC_ESC,   _______, UC_SCRL_DWN,   UC_SCRL_UP,   KC_BTN1, KC_BTN2,  _______, KC_HOME, KC_END,  _______,  _______,  KC_BSPC, \
+  _______,  KC_LSFT, KC_LCTL,       OPT_CTL,      KC_LGUI, _______,  _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,  KC_DEL, \
   _______, _______, _______,        _______,      _______, _______,  _______, AGUI_L,  AGUI_R , GO_BCK,  GO_FWD,    KC_ENT,  \
   _______, _______, _______,        _______,      _______, _______,  _______, _______, _______, _______, _______, _______   \
 ),
@@ -314,7 +321,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
 
-    case CG_TOGG:
+    case LCG_SWP:
+    case LCG_NRM:
       if (record->event.pressed) {
         curr_os_is_mac = keymap_config.swap_lctl_lgui;
       }
@@ -447,6 +455,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           unregister_code(KC_WH_U);
         } else {
           unregister_code(KC_WH_D);
+        }            
+      }
+      return false;
+      break;
+
+    case OPT_CTL:
+      if (record->event.pressed) {
+        if (curr_os_is_mac) {
+          register_code(KC_LALT);
+        } else {
+          register_code(KC_LCTL);
+        }
+      } else {
+        if (curr_os_is_mac) {
+          unregister_code(KC_LALT);
+        } else {
+          unregister_code(KC_LCTL);
         }            
       }
       return false;
