@@ -94,12 +94,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   ;  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Tab  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  -   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   "  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  |  GUI | Hyp  |Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
+ * | Hyp  |GUIctl|GUIalt|GUIsft|Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
  * `-----------------------------------------------------------------------------------'
  */
 [_DVORAK] = LAYOUT_preonic_grid( \
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,         TD(TD_SCLN),    TD(TD_COMM), KC_DOT,      KC_P,        KC_Y,       KC_F,     KC_G,         KC_C,         KC_R,         KC_L,         KC_BSPC,  \
   L3_TAB,         LSFT_T(KC_A),   CTL_T(KC_O), ALT_T(KC_E), GUI_T(KC_U), KC_I,       KC_D,     GUI_T(KC_H),  ALT_T(KC_T),  CTL_T(KC_N),  SFT_T(KC_S),  TD(TD_MINS), \
   OSM(MOD_LSFT),  TD(TD_QUOT),    KC_Q,        KC_J,        KC_K,        KC_X,       KC_B,     KC_M,         KC_W,         KC_V,         KC_Z,         KC_SFTENT,  \
-  KC_LCTL,        KC_LALT,        KC_LGUI,     HYPER,       LOWER,       L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
+  HYPER,          CMD_CTL,        CMD_ALT,     CMD_SFT,     LOWER,       L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
 ),
 
 
@@ -116,12 +116,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  |  GUI | Hyp  |Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
+ * | Hyp  |GUIctl|GUIalt|GUIsft|Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
@@ -129,49 +129,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,         KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,       KC_Y,     KC_U,         KC_I,         KC_O,         KC_P,         KC_BSPC,  \
   L3_TAB,         LSFT_T(KC_A), CTL_T(KC_S),  ALT_T(KC_D),  GUI_T(KC_F),  KC_G,       KC_H,     GUI_T(KC_J),  ALT_T(KC_K),  CTL_T(KC_L),  TD(TD_SCLN),  TD(TD_QUOT), \
   OSM(MOD_LSFT),  KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,       KC_N,     KC_M,         TD(TD_COMM),  KC_DOT,       KC_SLSH,      KC_SFTENT,  \
-  KC_LCTL,        KC_LALT,      KC_LGUI,      HYPER,        LOWER,        L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
+  HYPER,          CMD_CTL,      CMD_ALT,      CMD_SFT,      LOWER,        L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
 ),
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   %  |   &  |   #  |   ~  |      |   -  |   $  |   |  |   `  |      | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   [  |   {  |   (  |   =  |      |   +  |   ^  |   )  |   }  |   ]  |  \   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Alt  |  F10 |  F11 |  F12 |  F13 |  F14 |  F15 |ISO ~ |ISO | |ISO # |ISO / |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * | F11  |      |      |      |      |             |      |      |      |      |  F11 |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid( \
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,     KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_DEL, \
-  KC_ESC,  KC_PERC, KC_AMPR, KC_HASH, KC_TILD, KC_NO,   KC_PMNS, KC_DLR,      KC_PIPE,    KC_GRV,     KC_NO,      KC_DEL,   \
+  KC_ESC,  KC_PERC, KC_AMPR, KC_HASH, KC_TILD, KC_NO,   KC_PMNS, KC_DLR,      KC_PIPE,    KC_GRV,     KC_NO,      KC_BSPC,  \
   KC_TRNS, KC_LBRC, KC_LCBR, KC_LPRN, KC_EQL,  KC_NO,   KC_PPLS, KC_CIRC,     KC_RPRN,    KC_RCBR,    KC_RBRC,    KC_BSLS, \
   KC_LALT, KC_F10,  KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,  S(KC_NUHS),  S(KC_NUBS), KC_NUHS,    KC_NUBS,    _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______,     KC_MNXT,    KC_VOLD,    KC_VOLU,    KC_MPLY \
+  KC_F11,  _______, _______, _______, _______, _______, _______, _______,     XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_F11  \
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
+ * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  | F10  | Esc  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  | Save |SaveAs| Emoji|Strike| Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |  F11 |  F12 |  F13 |  F14 |  F15 | Emoji| Save |SLCT_A|  F16 |SaveAs|   `  |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Capsl| Play |  Prv | Next |      |      | Gui+L| Gui+/|   @  |   !  |   ?  |  /   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      | Mute | Vol -| Vol +|      |      |TG_num| Copy | Paste|  Cut | Undo |SLCT_A|
+ * |      | Mute | Vol -| Vol +|      |      |TG_num| Copy | Paste|  Cut | Undo |Strike|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |             |      |      |      |      |  F11 |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
-  KC_GRV,  KC_1,      KC_2,     KC_3,     KC_4,    KC_5,    KC_6,    KC_7,       KC_8,       KC_9,        KC_0,         KC_DEL, \
-  KC_TRNS, KC_F1,     KC_F2,    KC_F3,    KC_F4,   KC_F5,   KC_F6,   UC_SAVE,    UC_SAVEAS,  UC_EMOJI,    UC_STRIKE,    KC_BSPC,  \
-  KC_CAPS, KC_MPLY,   KC_MRWD,  KC_MFFD,  KC_F4,   KC_NO,   UC_LOCK, UC_COMMENT, KC_AT,      KC_EXLM,     KC_QUES,      KC_PSLS, \
-  _______, KC_MUTE,   KC_VOLD,  KC_VOLU,  KC_NO,   KC_NO,   TG_NUM,  UC_COPY,    UC_PASTE,   UC_CUT,      UC_UNDO,      SLCT_ALL, \
-  _______, _______,   _______,  _______,  _______, _______, _______, XXXXXXX,    KC_MNXT,    KC_VOLD,     KC_VOLU,      KC_MPLY  \
+  KC_GRV,  KC_F1,     KC_F2,    KC_F3,    KC_F4,   KC_F5,   KC_F6,    KC_F7,      KC_F8,      KC_F9,    KC_F10,     KC_ESC, \
+  KC_TRNS, KC_F11,    KC_F12,   KC_F13,   KC_F14,  KC_F15,  UC_EMOJI, UC_SAVE,    SLCT_ALL,   KC_F16,   UC_SAVEAS,  KC_GRV,  \
+  KC_CAPS, KC_MPLY,   KC_MRWD,  KC_MFFD,  KC_F4,   KC_NO,   UC_LOCK,  UC_COMMENT, KC_AT,      KC_EXLM,  KC_QUES,    KC_PSLS, \
+  _______, KC_MUTE,   KC_VOLD,  KC_VOLU,  KC_NO,   KC_NO,   TG_NUM,   UC_COPY,    UC_PASTE,   UC_CUT,   UC_UNDO,    UC_STRIKE, \
+  _______, _______,   _______,  _______,  _______, _______, _______,  XXXXXXX,    XXXXXXX,    XXXXXXX,  XXXXXXX,    KC_F11  \
 ),
 
 /* Adjust (Lower + Raise)
@@ -179,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |Dvorak|Qwerty|      |      |      |      |      |      |      |      | Debug|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Reset|      |      |      |      |      |      |      |      |      |TMNL 1|TMNL 0|
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |LCGswp|LCGnrm|      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
@@ -198,86 +198,86 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Numpad
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |      |      |      |      | Close| Esc  |  Del |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   :  |   ,  |      |      |      |   -  |   7  |   8  |   9  |   /  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Shift | Ctrl |  Alt | Gui  |      |   +  |   4  |   5  |   6  |   *  |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |   .  |   1  |   2  |   3  |   =  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |Dvorak|             |Raise0|GUIsft|GUIalt|GUIctl|Space |
+ * | Left | Down |  Up  | Right|Dvorak|             |Raise0|GUIsft|GUIalt|GUIctl|Space |
  * `-----------------------------------------------------------------------------------'
  */
 [_NUMPAD] = LAYOUT_preonic_grid( \
-  _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      RGUI(KC_R),     RGUI(KC_W),     KC_ESC,         KC_DEL,  \
-  KC_ESC,   KC_COLN, KC_COMM, XXXXXXX, XXXXXXX, XXXXXXX, KC_PMNS, KC_7,         KC_8,           KC_9,           KC_PSLS,        KC_BSPC, \
-  _______,  KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, KC_PPLS, GUI_T(KC_4),  ALT_T(KC_5),    CTL_T(KC_6),    SFT_T(KC_PAST), _______, \
-  _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DOT,  KC_1,         KC_2,           KC_3,           KC_PEQL,        KC_ENT,  \
-  _______,  _______, _______, _______, TG_NUM,  _______, _______, LT_RAISE,     CMD_SFT,        CMD_ALT,        CMD_CTL,        KC_SPC  \
+  _______,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      RGUI(KC_R),     RGUI(KC_W),     KC_ESC,         KC_DEL,  \
+  KC_ESC,   KC_COLN, KC_COMM, XXXXXXX,  XXXXXXX, XXXXXXX, KC_PMNS, KC_7,         KC_8,           KC_9,           KC_PSLS,        KC_BSPC, \
+  _______,  KC_LSFT, KC_LCTL, KC_LALT,  KC_LGUI, XXXXXXX, KC_PPLS, GUI_T(KC_4),  ALT_T(KC_5),    CTL_T(KC_6),    SFT_T(KC_PAST), _______, \
+  _______,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, KC_DOT,  KC_1,         KC_2,           KC_3,           KC_PEQL,        KC_ENT,  \
+  KC_LEFT,  KC_DOWN, KC_UP,   KC_RIGHT, TG_NUM,  _______, _______, LT_RAISE,     CMD_SFT,        CMD_ALT,        CMD_CTL,        KC_SPC  \
 ),
 
 
 /* Raise layer for numpad
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |  F6  |  F7  |  F8  |  F9  | F10  | Esc  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      | Save |SaveAs| Emoji|Strike|      |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      | Emoji| Save |SLCT_A|  F16 |SaveAs|   `  |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |TG_num| Copy | Paste|  Cut | Undo |SLCT_A|
+ * |      |      |      |      |      |      |TG_num| Copy | Paste|  Cut | Undo |Strike|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |      |
+ * |      |      |      |      |      |             |      |      |      |      |  F11 |
  * `-----------------------------------------------------------------------------------'
  */
 [_NUMRAISE] = LAYOUT_preonic_grid( \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_ESC, \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  UC_EMOJI,   UC_SAVE,    SLCT_ALL,   KC_F16,     UC_SAVEAS,  KC_GRV,  \
   XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    UC_SAVE,    UC_SAVEAS,  UC_EMOJI,   UC_STRIKE,  XXXXXXX,  \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  TG_NUM,     UC_COPY,    UC_PASTE,   UC_CUT,     UC_UNDO,    SLCT_ALL, \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX  \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  TG_NUM,     UC_COPY,    UC_PASTE,   UC_CUT,     UC_UNDO,    UC_STRIKE, \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_F11  \
 ),
 
 /* Mousekeys
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |MouseL|MouseD|MouseU|MouseR| Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |      |ScrlDn|ScrlUp|Mouse1|Mouse2|      | Home | End  |      |      | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |Shift | Ctrl |  Alt | Gui  |      |      | Left | Down |  Up  | Right| Del  |
+ * |      |MouseL|MouseD|MouseU|MouseR|      |      |MouseL|MouseD|MouseU|MouseR| Del  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Esc  |      |ScrlDn|ScrlUp|Mouse1|Mouse2| Home |  F12 |  F13 |  F14 |  F15 | Bksp |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |      |Shift | Ctrl |  Alt | Gui  |      | End  | Left | Down |  Up  | Right| Del  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      | Left | Right| Back | Fwd  | Ent  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |      |
+ * |      |      |      |      |      |             |      |      |      |      |  F11 |
  * `-----------------------------------------------------------------------------------'
  */
 [_MOUSEKEYS] = LAYOUT_preonic_grid( \
-  _______,  _______, _______,       _______,      _______, _______,  _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,   KC_DEL,  \
-  KC_ESC,   _______, UC_SCRL_DWN,   UC_SCRL_UP,   KC_BTN1, KC_BTN2,  _______, KC_HOME, KC_END,  _______,  _______,  KC_BSPC, \
-  _______,  KC_LSFT, KC_LCTL,       OPT_CTL,      KC_LGUI, _______,  _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,  KC_DEL, \
+  _______,  KC_MS_L, KC_MS_D,       KC_MS_U,      KC_MS_R, _______,  _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,   KC_DEL,  \
+  KC_ESC,   _______, UC_SCRL_DWN,   UC_SCRL_UP,   KC_BTN1, KC_BTN2,  KC_HOME, KC_F12,  KC_F13,  KC_F14,  KC_F15,    KC_BSPC, \
+  _______,  KC_LSFT, KC_LCTL,       OPT_CTL,      KC_LGUI, _______,  KC_END,  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,  KC_DEL, \
   _______, _______, _______,        _______,      _______, _______,  _______, AGUI_L,  AGUI_R , GO_BCK,  GO_FWD,    KC_ENT,  \
-  _______, _______, _______,        _______,      _______, _______,  _______, _______, _______, _______, _______, _______   \
+  _______, _______, _______,        _______,      _______, _______,  _______, _______, _______, _______, _______,   KC_F11   \
 ),
 
 /* Hyper layer (for switching virtual desktops)
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |  Del |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |      |      |      |      |      |      |      |      |      |      | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |  F1  |  F2  |  F3  |      |  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |      |
+ * | Esc  |      |      |      |      |      |      |  F4  |  F5  |  F6  |      | Bksp |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |  F7  |  F8  |  F9  |      |      |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | Left | Right|      |      |      |      |      |  F10 |  F11 |  F12 |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |  F13 |  F14 |  F15 |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_HYPER] = LAYOUT_preonic_grid( \
-  _______,  _______,     _______,      _______,      _______,      _______,      _______,      _______,      HYPR(KC_LEFT), HYPR(KC_RIGHT), _______,        KC_DEL,  \
-  KC_ESC,   _______,     _______,      _______,      _______,      _______,      _______,      _______,      _______,       _______,        _______,        KC_BSPC, \
-  _______,  HYPR(KC_P1), HYPR(KC_P2),  HYPR(KC_P3),  HYPR(KC_P4),  HYPR(KC_P5),  HYPR(KC_P6),  HYPR(KC_P7),  HYPR(KC_P8),   HYPR(KC_P9),    HYPR(KC_P0),    _______, \
-  _______,  _______,     _______,      _______,      _______,      _______,      _______,      _______,      _______,       _______,        _______,        _______,  \
-  _______,  _______,     _______,      _______,      _______,      _______,      _______,      _______,      _______,       _______,        _______,        _______   \
+  XXXXXXX,  XXXXXXX,          XXXXXXX,  XXXXXXX,          XXXXXXX,  XXXXXXX,  XXXXXXX,  HYPR(KC_P1),    HYPR(KC_P2),    HYPR(KC_P3),    XXXXXXX,    KC_DEL,  \
+  KC_ESC,   XXXXXXX,          XXXXXXX,  XXXXXXX,          XXXXXXX,  XXXXXXX,  XXXXXXX,  HYPR(KC_P4),    HYPR(KC_P5),    HYPR(KC_P6),    XXXXXXX,    KC_BSPC, \
+  XXXXXXX,  XXXXXXX,          XXXXXXX,  XXXXXXX,          XXXXXXX,  XXXXXXX,  XXXXXXX,  HYPR(KC_P7),    HYPR(KC_P8),    HYPR(KC_P9),    XXXXXXX,    XXXXXXX, \
+  XXXXXXX,  HYPR(KC_LEFT),    XXXXXXX,  HYPR(KC_RIGHT),   XXXXXXX,  XXXXXXX,  XXXXXXX,  HYPR(KC_P0),    HYPR(KC_A),     HYPR(KC_B),     XXXXXXX,    XXXXXXX,  \
+  XXXXXXX,  XXXXXXX,          XXXXXXX,  XXXXXXX,          XXXXXXX,  XXXXXXX,  XXXXXXX,  HYPR(KC_C),     HYPR(KC_D),     HYPR(KC_E),     XXXXXXX,    XXXXXXX   \
 )
 
 };
