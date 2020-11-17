@@ -176,22 +176,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |      |Dvorak|Qwerty|      |      |      |      |      |      |      |      | Debug|
+ * |      |      |      |      |      |      |      |      |      |      |      | Debug|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Reset|      |      |      |      |      |      |      |      |      |TMNL 1|TMNL 0|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |LCGswp|LCGnrm|      |      |      |
+ * |      |      |      |      |Qwerty|      |      |Dvorak|      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |LCGswp|      |      |LCGnrm|      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_preonic_grid( \
-  XXXXXXX, DVORAK,  QWERTY,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DEBUG,  \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DEBUG,  \
   RESET,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  TERM_ON,  TERM_OFF,  \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  LCG_SWP,  LCG_NRM,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  QWERTY,   XXXXXXX,  XXXXXXX,  DVORAK,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  LCG_SWP,  XXXXXXX,  XXXXXXX,  LCG_NRM,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, \
   XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX  \
 ),
 
