@@ -55,6 +55,8 @@ enum preonic_keycodes {
   RAISE,
   BACKLIT,
   OPT_CTL,
+  TOG_AUD,
+  TOG_VID,
 
   // shortcuts
   UC_LOCK,
@@ -91,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Dvorak
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
+ * |TOGvid|   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   ;  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -99,21 +101,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   "  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Hyp  |GUIctl|GUIalt|GUIsft|Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
+ * | Hyp  |GUIctl|GUIalt|GUIsft|Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|TOGaud|
  * `-----------------------------------------------------------------------------------'
  */
 [_DVORAK] = LAYOUT_preonic_grid( \
-  KC_GRV,         KC_1,           KC_2,        KC_3,        KC_4,        KC_5,       KC_6,     KC_7,         KC_8,         KC_9,         KC_0,         KC_DEL, \
+  TOG_VID,        KC_1,           KC_2,        KC_3,        KC_4,        KC_5,       KC_6,     KC_7,         KC_8,         KC_9,         KC_0,         KC_DEL, \
   KC_ESC,         TD(TD_SCLN),    TD(TD_COMM), KC_DOT,      KC_P,        KC_Y,       KC_F,     KC_G,         KC_C,         KC_R,         KC_L,         KC_BSPC,  \
   L3_TAB,         LSFT_T(KC_A),   CTL_T(KC_O), ALT_T(KC_E), GUI_T(KC_U), KC_I,       KC_D,     GUI_T(KC_H),  ALT_T(KC_T),  CTL_T(KC_N),  SFT_T(KC_S),  TD(TD_MINS), \
   OSM(MOD_LSFT),  TD(TD_QUOT),    KC_Q,        KC_J,        KC_K,        KC_X,       KC_B,     KC_M,         KC_W,         KC_V,         KC_Z,         KC_SFTENT,  \
-  HYPER,          CMD_CTL,        CMD_ALT,     CMD_SFT,     LOWER,       L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
+  HYPER,          CMD_CTL,        CMD_ALT,     CMD_SFT,     LOWER,       L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      TOG_AUD  \
 ),
 
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
+ * |TOGvid|   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -121,15 +123,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Hyp  |GUIctl|GUIalt|GUIsft|Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|Space |
+ * | Hyp  |GUIctl|GUIalt|GUIsft|Lower |    Space    |Raise |GUIsft|GUIalt|GUIctl|TOGaud|
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
-  KC_GRV,         KC_1,         KC_2,         KC_3,         KC_4,         KC_5,       KC_6,     KC_7,         KC_8,         KC_9,         KC_0,         KC_DEL, \
+  TOG_VID,        KC_1,         KC_2,         KC_3,         KC_4,         KC_5,       KC_6,     KC_7,         KC_8,         KC_9,         KC_0,         KC_DEL, \
   KC_ESC,         KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,       KC_Y,     KC_U,         KC_I,         KC_O,         KC_P,         KC_BSPC,  \
   L3_TAB,         LSFT_T(KC_A), CTL_T(KC_S),  ALT_T(KC_D),  GUI_T(KC_F),  KC_G,       KC_H,     GUI_T(KC_J),  ALT_T(KC_K),  CTL_T(KC_L),  TD(TD_SCLN),  TD(TD_QUOT), \
   OSM(MOD_LSFT),  KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,       KC_N,     KC_M,         TD(TD_COMM),  KC_DOT,       KC_SLSH,      KC_SFTENT,  \
-  HYPER,          CMD_CTL,      CMD_ALT,      CMD_SFT,      LOWER,        L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      KC_SPC  \
+  HYPER,          CMD_CTL,      CMD_ALT,      CMD_SFT,      LOWER,        L4_SPACE,   L4_SPACE, RAISE,        CMD_SFT,      CMD_ALT,      CMD_CTL,      TOG_AUD  \
 ),
 
 /* Lower
@@ -284,7 +286,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    // Layers
+    //** Layers **//
     case DVORAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
@@ -328,7 +330,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    // Keeb shortcuts
+    //** Keeb shortcuts **//
     case UC_LOCK:
       if (record->event.pressed) {
         if (curr_os_is_mac) {
@@ -425,7 +427,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break; 
 
-// Mouse navigation
+    //** Mouse navigation **//
     case UC_SCRL_UP:
       if (record->event.pressed) {
         if (curr_os_is_mac) {
@@ -476,11 +478,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+
+    //** Zoom shortcuts **//
+    case TOG_AUD:
+      if (record->event.pressed) {
+        if (curr_os_is_mac) {
+          register_mods(mod_config(MOD_BIT(KC_LGUI)));
+          register_code(KC_LSFT);
+          tap_code(KC_A);
+          unregister_code(KC_LSFT);
+          unregister_mods(mod_config(MOD_BIT(KC_LGUI)));
+        } else {
+          register_code(KC_LALT);
+          tap_code(KC_A);
+          unregister_code(KC_LALT);
+        }
+      return false;
+      break;
+
+    case TOG_VID:
+      if (record->event.pressed) {
+        if (curr_os_is_mac) {
+          register_mods(mod_config(MOD_BIT(KC_LGUI)));
+          register_code(KC_LSFT);
+          tap_code(KC_V);
+          unregister_code(KC_LSFT);
+          unregister_mods(mod_config(MOD_BIT(KC_LGUI)));
+        } else {
+          register_code(KC_LALT);
+          tap_code(KC_V);
+          unregister_code(KC_LALT);
+        }
+      return false;
+      break;
+
     }
   return true;
 };
-
-
 
 //Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
